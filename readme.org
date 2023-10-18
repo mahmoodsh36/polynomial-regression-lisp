@@ -14,7 +14,6 @@ to run the project:
   file=server.lisp
   sbcl --eval '(push *features* :hunchentoot-no-ssl)'\
        --eval '(ql:quickload :cldml)'\
-       --eval "(load \`"$file\`")"\
-       --eval "(sb-ext:save-lisp-and-die #p\`"out.exe\`" :toplevel (lambda () (start-server \`".\`")) :executable t :compression t)"
+       --eval "(load \`"$file\`")
 #+end_src
 then go to ~http://127.0.0.1:3000/client.html~
