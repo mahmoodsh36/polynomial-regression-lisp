@@ -1,0 +1,20 @@
+demo at https://www.youtube.com/watch?v=LTzNR9FVliU
+preinstallation of quicklisp is required, to run the project the files have to be placed in ~~/.quicklisp/local-projects/cldml/~:
+#+begin_src bash :results silent
+  [ ! -d ~/.quicklisp/local-projects/cldml ] && mkdir -p ~/.quicklisp/local-projects/cldml/
+  cp math-utils.lisp ~/.quicklisp/local-projects/cldml/
+  cp utils.lisp ~/.quicklisp/local-projects/cldml/
+  cp network.lisp ~/.quicklisp/local-projects/cldml/
+  cp regression.lisp ~/.quicklisp/local-projects/cldml/
+  cp cldml.asd ~/.quicklisp/local-projects/cldml/
+#+end_src
+now the library ~cldml~ can be imported in the repl with ~(asdf:load-system :cldml)~
+to run the project:
+#+begin_src bash
+  file=server.lisp
+  sbcl --eval '(push *features* :hunchentoot-no-ssl)'\
+       --eval '(ql:quickload :cldml)'\
+       --eval "(load \`"$file\`")"\
+       --eval "(sb-ext:save-lisp-and-die #p\`"out.exe\`" :toplevel (lambda () (start-server \`".\`")) :executable t :compression t)"
+#+end_src
+then go to ~http://127.0.0.1:3000/client.html~

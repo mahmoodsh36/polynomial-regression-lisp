@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <!-- import plotly, the plotting library -->
+  <!-- <script src="https://cdn.plot.ly/plotly-2.25.2.min.js" charset="utf-8"></script> -->
+</head>
+
+<body>
+  the model used here is single-input, single-output, so it cant learn functions higher than R -> R, although such models can be easily implemented too
+  <div class="container">
+    <canvas id="sketch_canvas" width="500" height="500"></canvas>
+    <div class="controls">
+      <p id="coords">coords: 0,0</p>
+      <button onclick="clearCanvas()">clear</button>
+      <!-- <p>max x:<input type="text" value="2" /></p> -->
+      <!-- <p>min x:<input type="text" value="-2" /></p> -->
+      <!-- <p>max y:<input type="text" value="2" /></p> -->
+      <!-- <p>min y:<input type="text" value="-2" /></p> -->
+      <p>epochs:<input id="epochs_input" type="text" value="1000000" /></p>
+      <p>polynomial degree:<input id="degree_input" type="text" value="3" /></p>
+      <p>learning rate:<input id="learning_rate_input" type="text" value="0.001" /></p>
+      use this button to start training
+      <button onclick="startTraining()">train</button>
+      <br>
+      use this button to stop training
+      <button onclick="cancelTraining()">cancel</button>
+      <br>
+      <!-- use this button to train more N epochs (depending on the number u specified) -->
+      <!-- <button onclick="">train more</button> -->
+    </div>
+  </div>
+  <br>
+  log:
+  <textarea id="log_textarea" rows="6" cols="70" placeholder="logs will be here once training starts"></textarea>
+  <p>if you notice the loss goes only up, then the model has failed to fit, this is normal in machine learning, click *cancel* and *train* to restart training</p>
+  <p>notice that loss here is just the difference between the actual values and the predicted ones</p>
+  <p>the "spikes" you see are probably due to float precision errors</p>
+</body>
+
+<style>
+  .container {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  canvas#sketch_canvas {
+    border-color: red;
+    border-width: 3px;
+    border-style: solid;
+    max-width: 500px;
+    height: 500px;
+  }
+
+  .controls {
+    display: flex;
+    flex-flow: column;
+  }
+</style>
+
+<script src="client.js"></script>
+
+</html>
