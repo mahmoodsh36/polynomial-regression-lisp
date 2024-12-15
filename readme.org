@@ -17,3 +17,5 @@ to run the project:
        --eval "(load \"$file\")
 #+end_src
 then go to ~http://127.0.0.1:3000/client.html~
+
+the code is documented at https://mahmoodsh36.github.io/convolutional_neural_network.html
